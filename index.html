@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Zapatos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: #555;
+            padding: 0.5em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 1em;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .filter-bar {
+            margin-bottom: 1em;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1em;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            font-size: 1.2em;
+            margin: 0.5em 0;
+        }
+
+        .product-card p {
+            color: #777;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tienda de Zapatos</h1>
+        <p>Encuentra las mejores marcas de zapatos</p>
+    </header>
+
+    <nav>
+        <a href="#deportivos">Deportivos</a>
+        <a href="#casuales">Casuales</a>
+        <a href="#formales">Formales</a>
+    </nav>
+
+    <div class="container">
+        <div class="filter-bar">
+            <label for="filter">Filtrar por categoría: </label>
+            <select id="filter" onchange="filterProducts()">
+                <option value="all">Todos</option>
+                <option value="deportivos">Deportivos</option>
+                <option value="casuales">Casuales</option>
+                <option value="formales">Formales</option>
+            </select>
+        </div>
+
+        <div class="products" id="product-list">
+            <!-- Ejemplo de producto -->
+            <div class="product-card" data-category="deportivos">
+                <img src="deportivo.jpg" alt="Zapato Deportivo">
+                <h3>Zapato Deportivo</h3>
+                <p>Marca: Nike</p>
+            </div>
+            <div class="product-card" data-category="casuales">
+                <img src="casual.jpg" alt="Zapato Casual">
+                <h3>Zapato Casual</h3>
+                <p>Marca: Vans</p>
+            </div>
+            <div class="product-card" data-category="formales">
+                <img src="formal.jpg" alt="Zapato Formal">
+                <h3>Zapato Formal</h3>
+                <p>Marca: Clarks</p>
+            </div>
+            <!-- Puedes agregar más productos aquí -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 Tienda de Zapatos</p>
+    </footer>
+
+    <script>
+        function filterProducts() {
+            const filter = document.getElementById("filter").value;
+            const products = document.querySelectorAll(".product-card");
+
+            products.forEach(product => {
+                if (filter === "all" || product.dataset.category === filter) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
